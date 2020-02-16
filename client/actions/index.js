@@ -28,12 +28,12 @@ export function fetchPosts () {
   return (dispatch) => {
     dispatch(requestPosts())
     return request
-      .get(`/api/v1/reddit/search/submission`)
-      .then(res => {
-        dispatch(receivePosts(res.body))
-      })
-      .catch(err => {
-        dispatch(showError(err.message))
-      })
+      .get(`/api/v1/reddit/search/submission/images`)
+      // .then(res => {
+      //   dispatch(receivePosts(res.body))
+      // })
+      // .catch(err => {
+      //   dispatch(showError(err.message))
+      // })
   }
 }
