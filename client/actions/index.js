@@ -13,7 +13,7 @@ export const requestPosts = () => {
 export const receivePosts = (posts) => {
   return {
     type: RECEIVE_POSTS,
-    posts: posts.map(post => post.data)
+    posts
   }
 }
 
@@ -24,14 +24,16 @@ export const showError = (errorMessage) => {
   }
 }
 
+// Asynchronous call that fetches data from api.
 export function fetchPosts () {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(requestPosts())
     return request
       .get(`/api/v1/reddit/search/submission/images`)
-      // .then(res => {
-      //   dispatch(receivePosts(res.body))
-      // })
+      .then(res => {
+        console.log('data from server routes: ', res.body)
+        dispatch(receivePosts(res.body))
+      })
       // .catch(err => {
       //   dispatch(showError(err.message))
       // })

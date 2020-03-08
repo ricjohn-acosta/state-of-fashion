@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Post = ({title}) => (
-  <div>{title}</div>
+const Post = ({author}) => (
+  <div>{author}</div>
 )
 
 export default Post
